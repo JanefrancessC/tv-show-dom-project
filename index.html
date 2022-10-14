@@ -11,17 +11,21 @@
   <body>
     <div id="root">
       <section class="search">
+        <select name="episodes" id="episodes">
+          <option value="" disabled selected>Select an Episode</option>
+        </select>
         <input
-          type="text"
-          placeholder="Search for Episode..."
+          type="search"
+          placeholder="&#128269; Search for Episode..."
           id="search-field"
           name="search-field"
         />
-        <h4 class="display">Displaying 73/73 episodes</h4>
+        <section class="display">
+          <p id="display-count">Displaying 73/73 episode(s)</p>
+        </section>
       </section>
-      
+      <section id="container"></section>
     </div>
-    <section class="container"></section>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>

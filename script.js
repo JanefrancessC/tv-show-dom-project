@@ -1,13 +1,14 @@
 //You can edit ALL of the code here
 const allEpisodes = getAllEpisodes();
+const rootElem = document.getElementById("root");
+rootElem.setAttribute("class", "root");
+let containerEl = document.getElementById("container");
+
 function setup() {
   makePageForEpisodes(allEpisodes);
 }
 // displaying the data contents
 function makePageForEpisodes(episodeList) {
-  const rootElem = document.getElementById("root");
-  rootElem.setAttribute("class", "root");
-  const containerEl = document.querySelector(".container");
   episodeList.forEach((episode) => {
     let episodeContainer = document.createElement("section");
     episodeContainer.setAttribute("class", "episode-container");
@@ -41,19 +42,40 @@ function episodeCode(season, number) {
   number = number < 10 ? "0" + number : number;
   return `S${season}E${number}`;
 }
-const searchField = document.getElementById("search-field");
 
-searchField.addEventListener("keyup", (e) => {
+// Search box
+const searchEl = document.getElementById("search-field");
+const displayCountEl = document.getElementById("display-count");
+
+searchEl.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
-  //  let allEpisodes = [];
-  console.log(searchString);
-  const pickedEpisodes = allEpisodes.filter((episode) => {
+
+  const searchedEpisodes = allEpisodes.filter((episode) => {
     return (
       episode.name.toLowerCase().includes(searchString) ||
       episode.summary.toLowerCase().includes(searchString)
     );
   });
-  //makePageForEpisodes(pickedEpisodes);
-  console.log(pickedEpisodes)
+  displayCountEl.innerText = `${searchedEpisodes.length} / ${allEpisodes.length} episode(s)`;
+  containerEl.innerHTML = "";
+  makePageForEpisodes(searchedEpisodes);
 });
+
+// select episode
+
+let selectEl = document.getElementById("episodes");
+
+allEpisodes.forEach((episode) => {
+  let optionEl = document.createElement("option");
+  selectEl.appendChild(optionEl);
+
+  optionEl.innerText = `${episodeCode(episode.season, episode.number)} - ${
+    episode.name
+  } `;
+  selectEl.addEventListener("change", (e) => {
+    containerEl.innerHTML = "";
+    let selectedOption = e.target.value;
+  });
+});
+
 window.onload = setup;

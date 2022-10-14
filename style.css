@@ -7,6 +7,9 @@
 .root {
   color: black;
 }
+
+
+
 .search {
   background-color: #011112;
   height: 100px;
@@ -20,13 +23,18 @@
 .display {
   color: rgb(218, 214, 214)
 }
+#episodes {
+  width: 250px;
+  height: 30px; 
+}
+
 
 #search-field {
   width: 250px;
   height: 30px;
   text-align: justify;
 }
-.container {
+#container {
   background-color: rgba(221, 223, 228, 0.91);
   width: 90%;
   margin: auto;
