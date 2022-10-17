@@ -1,0 +1,35 @@
+@media (max-width: 600px) {
+  .search {
+    background-color: rgba(122, 124, 122, 0.893);
+    width: 100%;
+    height: 8rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+    margin: auto;
+  }
+
+  #container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+
+  .episode-container {
+    width: 60%;
+    margin: 1rem 2rem;
+    margin-left: 5rem;
+  }
+
+  #select-reset {
+    margin-top: 1rem;
+  }
+
+  #input-search {
+    justify-content: center;
+    gap: 0.7rem;
+    margin-left: 2.6rem;
+
+  }
+}
