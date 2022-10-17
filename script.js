@@ -1,12 +1,24 @@
 //You can edit ALL of the code here
-const allEpisodes = getAllEpisodes();
+let allEpisodes; //= getAllEpisodes();
 const rootElem = document.getElementById("root");
 rootElem.setAttribute("class", "root");
 let containerEl = document.getElementById("container");
 
-function setup() {
-  makePageForEpisodes(allEpisodes);
-}
+// using the API fetch
+
+const url = "https://api.tvmaze.com/shows/82/episodes";
+
+const setup = async () => {
+  try {
+    const response = fetch(url);
+    allEpisodes = await (await response).json();
+    console.log(allEpisodes);
+    makePageForEpisodes(allEpisodes);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // displaying the data contents
 function makePageForEpisodes(episodeList) {
   episodeList.forEach((episode) => {
@@ -21,6 +33,12 @@ function makePageForEpisodes(episodeList) {
       episode.number
     )}`;
     episodeContainer.appendChild(episodeName);
+
+    let optionEl = document.createElement("option");
+    selectEl.appendChild(optionEl);
+    optionEl.innerText = `${episodeCode(episode.season, episode.number)} - ${
+      episode.name
+    } `;
 
     // thumbnails
 
@@ -57,23 +75,17 @@ searchEl.addEventListener("keyup", (e) => {
     );
   });
   displayCountEl.innerText = `${searchedEpisodes.length} / ${allEpisodes.length} episode(s)`;
-  containerEl.innerHTML = "";
+  // to clear the episode container, next line  || the next 3 lines
+  // containerEl.innerHTML = "";
+  while (containerEl.firstChild) {
+    containerEl.removeChild(containerEl.firstChild);
+  }
   makePageForEpisodes(searchedEpisodes);
 });
 
 // select episode
 
 let selectEl = document.getElementById("episodes");
-let optionEl = document.createElement("option");
-
-allEpisodes.forEach((episode) => {
-  let optionEl = document.createElement("option");
-  selectEl.appendChild(optionEl);
-
-  optionEl.innerText = `${episodeCode(episode.season, episode.number)} - ${
-    episode.name
-  } `;
-});
 
 selectEl.addEventListener("change", (e) => {
   let selectedEpisode = [];
@@ -87,7 +99,8 @@ selectEl.addEventListener("change", (e) => {
   containerEl.innerHTML = "";
   makePageForEpisodes(selectedEpisode);
 });
-// reset
+
+// reset button
 
 let resetEl = document.getElementById("btnReset");
 resetEl.addEventListener("click", () => {
