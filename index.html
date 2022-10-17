@@ -11,17 +11,22 @@
   <body>
     <div id="root">
       <section class="search">
-        <select name="episodes" id="episodes">
+        <section id="select-reset">
+          <select name="episodes" id="episodes">
           <option value="" disabled selected>Select an Episode</option>
         </select>
-        <input
-          type="search"
-          placeholder="&#128269; Search for Episode..."
-          id="search-field"
-          name="search-field"
-        />
-        <section class="display">
-          <p id="display-count">Displaying 73/73 episode(s)</p>
+        <input type="button" id="btnReset" value="Reset" />
+        </section>
+        <section id="input-search">
+          <input
+            type="search"
+            placeholder="&#128269; Search for Episode..."
+            id="search-field"
+            name="search-field"
+          />
+          <section class="display">
+            <p id="display-count">Displaying 73/73 episode(s)</p>
+          </section>
         </section>
       </section>
       <section id="container"></section>
@@ -34,7 +39,7 @@
     <script src="script.js"></script>
   </body>
   <footer>
-    The data has (originally) come from
+    Data retrieved from
     <a href="https://www.tvmaze.com/">TVMaze.com</a>
   </footer>
 </html>
