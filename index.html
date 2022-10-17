@@ -9,7 +9,23 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <section class="search">
+        <select name="episodes" id="episodes">
+          <option value="" disabled selected>Select an Episode</option>
+        </select>
+        <input
+          type="search"
+          placeholder="&#128269; Search for Episode..."
+          id="search-field"
+          name="search-field"
+        />
+        <section class="display">
+          <p id="display-count">Displaying 73/73 episode(s)</p>
+        </section>
+      </section>
+      <section id="container"></section>
+    </div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
@@ -17,4 +33,8 @@
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
   </body>
+  <footer>
+    The data has (originally) come from
+    <a href="https://www.tvmaze.com/">TVMaze.com</a>
+  </footer>
 </html>
