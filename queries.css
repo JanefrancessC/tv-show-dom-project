@@ -4,7 +4,7 @@
     width: 100%;
     height: 8rem;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 1.8rem;
     margin: auto;
@@ -12,14 +12,14 @@
 
   #container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
     width: 80%;
   }
 
   .episode-container {
-    width: 60%;
-    margin: 1rem 2rem;
-    margin-left: 5rem;
+    width: 75%;
+    margin: 1.5rem 2rem;
+    margin-left: 3rem;
   }
 
   #select-reset {
@@ -28,8 +28,16 @@
 
   #input-search {
     justify-content: center;
+    align-items: center;
     gap: 0.7rem;
     margin-left: 2.6rem;
-
+margin-bottom: 1.5rem;
   }
+
+  #display-count {
+    color: rgb(22, 60, 72);
+  }
+
+  #search-field[placeholder="&#128269"] {
+opacity: 0;
 }
