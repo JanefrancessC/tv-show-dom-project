@@ -72,10 +72,19 @@ allEpisodes.forEach((episode) => {
   optionEl.innerText = `${episodeCode(episode.season, episode.number)} - ${
     episode.name
   } `;
-  selectEl.addEventListener("change", (e) => {
-    containerEl.innerHTML = "";
-    let selectedOption = e.target.value;
+});
+
+selectEl.addEventListener("change", (e) => {
+  let selectedEpisode = [];
+  let selectedOption = e.target.value;
+  allEpisodes.forEach((option) => {
+    if (selectedOption.includes(option.name)) {
+      selectedEpisode.push(option);
+    }
   });
+
+  containerEl.innerHTML = "";
+  makePageForEpisodes(selectedEpisode);
 });
 
 window.onload = setup;
