@@ -64,6 +64,7 @@ searchEl.addEventListener("keyup", (e) => {
 // select episode
 
 let selectEl = document.getElementById("episodes");
+let optionEl = document.createElement("option");
 
 allEpisodes.forEach((episode) => {
   let optionEl = document.createElement("option");
@@ -85,6 +86,14 @@ selectEl.addEventListener("change", (e) => {
 
   containerEl.innerHTML = "";
   makePageForEpisodes(selectedEpisode);
+});
+// reset
+
+let resetEl = document.getElementById("btnReset");
+resetEl.addEventListener("click", () => {
+  selectEl.selectedIndex = 0;
+  containerEl.innerHTML = "";
+  makePageForEpisodes(allEpisodes);
 });
 
 window.onload = setup;
