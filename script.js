@@ -35,7 +35,10 @@ function displayAllShows(showList) {
     // showname
     const showName = document.createElement("h3");
     showName.className = "show-name";
-    showName.innerText = `${show.name}`;
+    showName.innerHTML = `${show.name}`;
+    // showName.addEventListener('click', () => {
+    //   loadShowList(`${show.id}`)
+    // })
     // console.log(showName);
     showContainer.appendChild(showName);
 
@@ -49,30 +52,35 @@ function displayAllShows(showList) {
     if (show.image) showImage.src = `${show.image.medium}`;
     else showImage.src = "image.png";
     showContainer.appendChild(showImage);
+    // show ratings combo
+const comboEl = document.createElement('section')
+comboEl.className = 'combo';
+showContainer.appendChild(comboEl)
 
     //show genre
     const showGenre = document.createElement("p");
-    showGenre.innerHTML = `<strong>Genre(s):</strong> ${show.genres}`;
-    showContainer.appendChild(showGenre);
+    showGenre.innerHTML = `<strong style = "color: orangered">Genre(s): </strong> ${show.genres}`;
+    comboEl.appendChild(showGenre);
 
     //show rating
     const showRating = document.createElement("p");
-    showRating.innerHTML = `<strong>Ratings:</strong> ${show.rating.average}`;
-    showContainer.appendChild(showRating);
+    showRating.innerHTML = `<strong style = "color: orangered">Ratings:</strong> ${show.rating.average}`;
+    comboEl.appendChild(showRating);
 
     //show status
     const showStatus = document.createElement("p");
-    showStatus.innerHTML = `<strong>Status:</strong>${show.status}`;
-    showContainer.appendChild(showStatus);
+    showStatus.innerHTML = `<strong style = "color: orangered">Status:</strong> ${show.status}`;
+    comboEl.appendChild(showStatus);
 
-    //show runtiome
+    //show runtime
     const showRuntime = document.createElement("p");
-    showRuntime.innerHTML = `<strong>Runtime:</strong>${show.runtime}`;
-    showContainer.appendChild(showRuntime);
+    showRuntime.innerHTML = `<strong style = "color: orangered">Runtime: </strong>${show.runtime}`;
+    comboEl.appendChild(showRuntime);
 
     //show summary
 
     const showSummary = document.createElement("p");
+    showSummary.className = 'show-summary'
     showSummary.innerHTML = `${show.summary}`;
     showContainer.appendChild(showSummary);
   });
@@ -95,10 +103,12 @@ selectShowEl.addEventListener("change", (e) => {
 
   containerEl.innerHTML = "";
   selectShowEl.style.display = "none";
+  searchShowEl.style.display = "none";
   selectEl.style.display = "block";
   searchEl.style.display = "block";
   resetEl.style.display = "block";
   homeEl.style.display = "block";
+  displayCountEl.innerHTML = `Displaying ${selectedShow.length}/${allShows.length} show(s)`;
 });
 
 // search show
@@ -117,6 +127,9 @@ searchShowEl.addEventListener("keyup", (e) => {
   // console.log(searchedShow);
   containerEl.innerHTML = "";
   displayAllShows(searchedShow);
+  displayCountEl.innerHTML = `Displaying ${searchedShow.length}/${allShows.length} show(s)`;
+  //FIND OUT HOW TO POPULATE THE SELECTED OPTIONS WITH THE SEARCHEDSHOW ARRAY
+  
 });
 
 // using the API fetch
@@ -177,7 +190,6 @@ function episodeCode(season, number) {
 // Search box
 const searchEl = document.getElementById("search-field");
 const displayCountEl = document.getElementById("display-count");
-// displayCountEl.innerText = `Displaying ${allEpisodes.length}/73 episode(s)`;
 
 searchEl.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -234,10 +246,12 @@ homeEl.addEventListener("click", () => {
   containerEl.innerHTML = "";
   displayAllShows(allShows);
   selectShowEl.style.display = "block";
+  searchShowEl.style.display = 'block'
   selectEl.style.display = "none";
   searchEl.style.display = "none";
   resetEl.style.display = "none";
   homeEl.style.display = "none";
+  displayCountEl.innerHTML = `Displaying ${allShows.length}/${allShows.length} show(s)`
 });
 
 window.onload = setup;
