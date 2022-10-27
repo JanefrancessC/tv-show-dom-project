@@ -12,8 +12,20 @@
   <body>
     <div id="root">
       <section class="search">
+        <!-- <section id="page-load">
+
+        </section> -->
+        <section id="home-page">
+          <input type="button" id="back" value="Home">
+        </section>
+        <section id="all-shows">
+          <select name="select-show" id="select-show">
+            <option value="" disabled selected>--Select Show--</option>
+          </select>
+        </section>
+        <section id="show-search"><input type="search" id="search-show" placeholder="---search for show---"></section>
         <section id="select-reset">
-          <select name="episodes" id="episodes">
+          <select name="episodes" id="episodes" class="select-episodes">
           <option value="" disabled selected>Select an Episode</option>
         </select>
         <input type="button" id="btnReset" value="Reset" />
@@ -21,12 +33,12 @@
         <section id="input-search">
           <input
             type="search"
-            placeholder="&#128269; Search for Episode..."
+            placeholder="&#128269; ---Search for Episode---"
             id="search-field"
             name="search-field"
           />
           <section class="display">
-            <p id="display-count">Displaying 73/73 episode(s)</p>
+            <p id="display-count"></p>
           </section>
         </section>
       </section>
@@ -35,6 +47,9 @@
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
+
+    <!-- Loads all shows  -->
+    <script src="shows.js"></script>
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>

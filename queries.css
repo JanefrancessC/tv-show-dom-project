@@ -1,8 +1,9 @@
 @media (max-width: 1024px) {
   #container {
-    width: 90%;
+    width: 100%;
     grid-template-columns: repeat(3, 1fr);
   }
+ 
 }
 
 @media (max-width: 600px) {
