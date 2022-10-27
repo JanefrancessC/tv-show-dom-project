@@ -50,12 +50,14 @@ function displayAllShows(showList) {
     // show thumbnails
     const showImage = document.createElement("img");
     if (show.image) showImage.src = `${show.image.medium}`;
-    else showImage.src = "image.png";
+    else
+      showImage.src =
+        "https://img.freepik.com/premium-vector/error-404-landing-page-with-file-flat-design_249405-162.jpg?w=2000";
     showContainer.appendChild(showImage);
     // show ratings combo
-const comboEl = document.createElement('section')
-comboEl.className = 'combo';
-showContainer.appendChild(comboEl)
+    const comboEl = document.createElement("section");
+    comboEl.className = "combo";
+    showContainer.appendChild(comboEl);
 
     //show genre
     const showGenre = document.createElement("p");
@@ -80,7 +82,7 @@ showContainer.appendChild(comboEl)
     //show summary
 
     const showSummary = document.createElement("p");
-    showSummary.className = 'show-summary'
+    showSummary.className = "show-summary";
     showSummary.innerHTML = `${show.summary}`;
     showContainer.appendChild(showSummary);
   });
@@ -108,6 +110,7 @@ selectShowEl.addEventListener("change", (e) => {
   searchEl.style.display = "block";
   resetEl.style.display = "block";
   homeEl.style.display = "block";
+  document.querySelector(".search-icon").style.display = "block";
   displayCountEl.innerHTML = `Displaying ${selectedShow.length}/${allShows.length} show(s)`;
 });
 
@@ -126,10 +129,13 @@ searchShowEl.addEventListener("keyup", (e) => {
   });
   // console.log(searchedShow);
   containerEl.innerHTML = "";
+  selectShowEl.innerHTML = "";
+  let selectOption = document.createElement("option");
+  selectOption.innerHTML = "---select show---";
+  selectShowEl.appendChild(selectOption);
   displayAllShows(searchedShow);
   displayCountEl.innerHTML = `Displaying ${searchedShow.length}/${allShows.length} show(s)`;
   //FIND OUT HOW TO POPULATE THE SELECTED OPTIONS WITH THE SEARCHEDSHOW ARRAY
-  
 });
 
 // using the API fetch
@@ -190,6 +196,15 @@ function episodeCode(season, number) {
 // Search box
 const searchEl = document.getElementById("search-field");
 const displayCountEl = document.getElementById("display-count");
+function clearPlaceholder() {
+  searchEl.placeholder = "";
+}
+
+function returnPlaceholder() {
+  searchEl.placeholder = "---search episodes---";
+}
+
+
 
 searchEl.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -208,6 +223,11 @@ searchEl.addEventListener("keyup", (e) => {
   }
   makePageForEpisodes(searchedEpisodes);
 });
+
+function reloadEpisodes() {
+  containerEl.innerHTML = "";
+  makePageForEpisodes(allEpisodes);
+}
 
 // select episode
 
@@ -236,6 +256,7 @@ resetEl.addEventListener("click", () => {
   selectEl.selectedIndex = 0;
   containerEl.innerHTML = "";
   makePageForEpisodes(allEpisodes);
+  displayCountEl.innerHTML = `${allEpisodes.length}/${allEpisodes.length} episode(s)`;
 });
 
 // Back home button
@@ -246,12 +267,12 @@ homeEl.addEventListener("click", () => {
   containerEl.innerHTML = "";
   displayAllShows(allShows);
   selectShowEl.style.display = "block";
-  searchShowEl.style.display = 'block'
+  searchShowEl.style.display = "block";
   selectEl.style.display = "none";
   searchEl.style.display = "none";
   resetEl.style.display = "none";
   homeEl.style.display = "none";
-  displayCountEl.innerHTML = `Displaying ${allShows.length}/${allShows.length} show(s)`
+  displayCountEl.innerHTML = `Displaying ${allShows.length}/${allShows.length} show(s)`;
 });
 
 window.onload = setup;
