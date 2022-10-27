@@ -85,7 +85,7 @@
 #container {
   /* background-color: rgba(221, 223, 228, 0.91); */
   background: linear-gradient(
-    rgba(187, 200, 197, 0.91),
+    rgba(219, 240, 235, 0.91),
     rgba(119, 130, 122, 0.91)
   );
   width: 100%;
@@ -110,7 +110,7 @@
 .show-container {
   width: 90%;
   text-align: center;
-  background-color: rgba(199, 201, 206, 0.91);
+  background-color: rgba(245, 246, 251, 0.91);
   margin: 0.938rem;
   box-shadow: 1px 1px 4px 0.313rem #888;
   border-radius: 0.5rem;

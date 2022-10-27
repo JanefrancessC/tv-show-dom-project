@@ -59,22 +59,22 @@ showContainer.appendChild(comboEl)
 
     //show genre
     const showGenre = document.createElement("p");
-    showGenre.innerHTML = `<strong style = "color: orangered">Genre(s): </strong> ${show.genres}`;
+    showGenre.innerHTML = `<strong style = "color: green">Genre(s): </strong> ${show.genres}`;
     comboEl.appendChild(showGenre);
 
     //show rating
     const showRating = document.createElement("p");
-    showRating.innerHTML = `<strong style = "color: orangered">Ratings:</strong> ${show.rating.average}`;
+    showRating.innerHTML = `<strong style = "color: green">Ratings:</strong> ${show.rating.average}`;
     comboEl.appendChild(showRating);
 
     //show status
     const showStatus = document.createElement("p");
-    showStatus.innerHTML = `<strong style = "color: orangered">Status:</strong> ${show.status}`;
+    showStatus.innerHTML = `<strong style = "color: green">Status:</strong> ${show.status}`;
     comboEl.appendChild(showStatus);
 
     //show runtime
     const showRuntime = document.createElement("p");
-    showRuntime.innerHTML = `<strong style = "color: orangered">Runtime: </strong>${show.runtime}`;
+    showRuntime.innerHTML = `<strong style = "color: green">Runtime: </strong>${show.runtime}`;
     comboEl.appendChild(showRuntime);
 
     //show summary
