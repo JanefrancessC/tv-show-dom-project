@@ -7,13 +7,13 @@
     <link href="style.css" rel="stylesheet" />
     <link href="queries.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
       integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    /> -->
   </head>
 
   <body>
@@ -38,6 +38,9 @@
             type="search"
             id="search-show"
             placeholder="---search for show---"
+            onblur="showPlaceholder()"
+            onfocus="clearShowPlaceholder()"
+            onclick="reloadShows()"
           />
         </section>
         <section id="select-reset">
@@ -48,7 +51,7 @@
         </section>
         <section id="input-search">
           <div class="search-input-wrapper">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- <i class="fa-solid fa-magnifying-glass search-icon"></i> -->
             <input
               type="search"
               placeholder=" ---Search for Episode---"
