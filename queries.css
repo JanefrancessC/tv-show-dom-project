@@ -1,0 +1,54 @@
+@media (max-width: 1024px) {
+  #container {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+}
+
+@media (max-width: 600px) {
+  .search {
+    background-color: rgb(9, 9, 9);
+    width: 100%;
+    height: 8rem;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    margin: auto;
+  }
+
+  #container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+  }
+
+  .episode-container {
+    width: 75%;
+    margin: 1.5rem 2rem;
+    margin-left: 3rem;
+  }
+
+  #select-reset {
+    margin-top: 2rem;
+  }
+
+  #input-search {
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    padding-left: 6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #display-count {
+    color: rgb(218, 33, 16);
+    font-weight: 700;
+    font-size: small;
+  }
+
+  #search-field[placeholder="&#128269"] {
+    opacity: 0;
+  }
+}
